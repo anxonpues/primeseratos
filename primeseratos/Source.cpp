@@ -7,7 +7,7 @@
 // This Function returns a vector containing all primes less than n using seive of eratosthenes
 std::vector<long long> primes_less_than(long long n)
 {
-    std::vector<long long> ans(0);
+    std::vector<long long> ans(0); 
     if (n <= 2)
         return ans;
     std::map<long long, bool> is_prime;
@@ -39,10 +39,35 @@ int main()
     ldp = primes_less_than(number);
     const std::chrono::time_point<std::chrono::steady_clock> end = std::chrono::steady_clock::now();
     std::cout << "\n" << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << " microseconds  " << std::endl;
-    std::cout << "\n\nldp = { ";
+    std::cout << "\n\nldp = { \n";
     for (long long n : ldp)
-        std::cout << n << " ";
-    std::cout << "}; \n";
+    { 
+        int k= std::floor(std::log10(n));
+        switch (k)
+        {    
+        case 0:
+            std::cout << "     ";
+            break;
+        case 1:
+            std::cout << "    ";
+            break;
+        case 2:
+            std::cout << "   ";
+            break;
+        case 3:
+            std::cout << "  ";
+            break;
+        case 4:
+            std::cout << " ";
+        case 5:
+            std::cout << "";
+            break;
+        }
+
+        std::cout << n ; 
+    }
+       
+    std::cout << "\n }; \n";
     std::cin.get();
     std::cin.get();
     std::cin.get();
